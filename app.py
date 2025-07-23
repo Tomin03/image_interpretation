@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import base64
+import os
+from PIL import Image
 
 # Background
 
@@ -35,3 +37,9 @@ st.markdown("<h2 style='text-align: center;'>🔍 Choose the picture to analyse<
 
 image_list = [f"Image_{i}.jpg" for i in range(1, 11)]
 selected_image = st.selectbox("🔽 Image", image_list)
+
+if os.path.exists(selected_image):
+    image = Image.open(selected_image)
+    st.image(image, caption='Wybrany obraz', use_container_width=True)
+else:
+    st.warning('Nie znaleziono obrazu❗')
