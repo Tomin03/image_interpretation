@@ -4,6 +4,7 @@ import streamlit as st
 import base64
 import os
 from PIL import Image
+from generating_caption import generate_caption
 
 # Background
 
@@ -41,5 +42,12 @@ selected_image = st.selectbox("🔽 Image", image_list)
 if os.path.exists(selected_image):
     image = Image.open(selected_image)
     st.image(image, caption='Wybrany obraz', use_container_width=True)
+
+    with st.spinner("🧠 Generowanie opisu obrazu... "):
+        caption = generate_caption(image)
+
+    st.subheader("📃 Opis wygenerowany przez BLIP:")
+    st.write(caption)
+
 else:
     st.warning('Nie znaleziono obrazu❗')
