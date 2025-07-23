@@ -1,7 +1,7 @@
 from transformers import BlipProcessor, BlipForConditionalGeneration
-import torch
 from PIL import Image
 import streamlit as st
+import numpy as np
 
 @st.cache_resource
 def load_blip():

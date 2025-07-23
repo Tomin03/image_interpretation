@@ -43,10 +43,10 @@ if os.path.exists(selected_image):
     image = Image.open(selected_image)
     st.image(image, caption='Wybrany obraz', use_container_width=True)
 
-    with st.spinner("🧠 Generowanie opisu obrazu... "):
+    with st.spinner("🧠 Generating Caption... "):
         caption = generate_caption(image)
 
-    st.subheader("📃 Opis wygenerowany przez BLIP:")
+    st.subheader("📃 The caption generated with BLIP:")
     st.write(caption)
 
 else:
